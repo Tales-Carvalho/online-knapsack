@@ -21,7 +21,7 @@ def generate_data(n: int, max_weight: float, p_min: float, p_max: float, seed: i
     return items
 
 if __name__ == '__main__':
-    n, w_max, p_min, p_max = 10000, 0.01, 0.1, 1000
+    n, w_max, p_min, p_max = 10000, 0.01, 1, 100
     print('Data generation test:')
     items = generate_data(n, w_max, p_min, p_max)
     w = [i.weight for i in items]
