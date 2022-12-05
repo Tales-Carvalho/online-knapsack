@@ -1,3 +1,4 @@
+from __future__ import annotations
 from pulp import LpProblem, LpVariable, GLPK, PULP_CBC_CMD, LpMaximize, LpBinary, lpSum
 
 from data import Item

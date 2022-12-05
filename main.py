@@ -1,3 +1,4 @@
+from __future__ import annotations
 from argparse import ArgumentParser
 import numpy as np
 from multiprocessing import Pool
