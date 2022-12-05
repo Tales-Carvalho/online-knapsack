@@ -3,12 +3,9 @@
 source env/bin/activate
 mkdir -p results
 
-e=1000
-n=10000
-p_min=0.1
-p_max=1000
-
-for w_min in 0.01 0.05 0.1 0.5 1 5 10
+for config in 1 2 3 4 5 6 7
 do
-    python main.py $e $n $w_min $p_min $p_max > results/wmin_$w_min.out
+    source configs/$config.env
+    echo $w_max
+    python main.py $e $n $w_max $p_min $p_max > results/wmax_$w_max.out
 done
