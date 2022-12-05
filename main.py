@@ -2,7 +2,7 @@ from argparse import ArgumentParser
 import numpy as np
 from multiprocessing import Pool
 
-from utils import verify_result
+from utils import verify_result, get_values
 from data import Item, generate_data
 from online_knapsack import online_knapsack
 from offline_knapsack import offline_knapsack
@@ -23,16 +23,18 @@ class Experiment:
     
     def run_one(self, items: list[Item]):
         offline_obj, offline_vars = offline_knapsack(items)
-        verify_result(items, offline_vars, offline_obj)
+        offline_sum_values, offline_sum_weights = get_values(items, offline_vars)
+        verify_result(offline_sum_values, offline_sum_weights, offline_obj)
         online_obj, online_vars = online_knapsack(items, self.p_min, self.p_max)
-        verify_result(items, online_vars, online_obj)
-        return offline_obj/online_obj
+        online_sum_values, online_sum_weights = get_values(items, online_vars)
+        verify_result(online_sum_values, online_sum_weights, online_obj)
+        return offline_sum_values, offline_sum_weights, online_sum_values, online_sum_weights
     
     def run_experiment(self):
         sets_items = self.init_inputs()
         with Pool() as pool:
-            empirical_ratios = pool.map(self.run_one, sets_items)
-        return empirical_ratios
+            results = pool.map(self.run_one, sets_items)
+        return results
 
 def main():
     parser = ArgumentParser()
@@ -43,7 +45,14 @@ def main():
     parser.add_argument("p_max", help="Maximum density of items", type=float, default=1000)
     args = parser.parse_args()
     
-    empirical_ratios = Experiment(args).run_experiment()
+    results = Experiment(args).run_experiment()
+    
+    empirical_ratios = []
+    for result in results:
+        offline_sum_values, offline_sum_weights, online_sum_values, online_sum_weights = result
+        empirical_ratios.append(offline_sum_values / online_sum_values)
+        print(f'{{Offline_Obj: {offline_sum_values}, Offline_Weight: {offline_sum_weights}, '
+                + f'Online_Obj: {online_sum_values}, Online_Weights: {online_sum_weights}}}')
     
     print(f'Setup: {args.n} items, p_min={args.p_min}, p_max={args.p_max}, w_max={args.w_max}')
     print('Competitive ratio:', 1+np.log(args.p_max/args.p_min))
