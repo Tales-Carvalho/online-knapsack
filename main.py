@@ -12,12 +12,13 @@ class Experiment:
     def __init__(self, args):
         self.experiments = args.experiments
         self.n = args.n
+        self.d = args.d
         self.w_max = args.w_max
         self.p_min = args.p_min
         self.p_max = args.p_max
     
     def run_one(self, seed: int):
-        items = generate_data(self.n, self.w_max, self.p_min, self.p_max, seed)
+        items = generate_data(self.n, self.d, self.w_max, self.p_min, self.p_max, seed)
         offline_obj, offline_vars = offline_knapsack(items)
         offline_sum_values, offline_sum_weights = get_values(items, offline_vars)
         verify_result(offline_sum_values, offline_sum_weights, offline_obj)
@@ -35,6 +36,7 @@ def main():
     parser = ArgumentParser()
     parser.add_argument("experiments", help="Number of experiments", type=int, default=1000)
     parser.add_argument("n", help="Number of items", type=int, default=10000)
+    parser.add_argument("d", help="Weights dimension of each item", type=int, default=1)
     parser.add_argument("w_max", help="Maximum weight of items", type=float, default=0.01)
     parser.add_argument("p_min", help="Minimum density of items", type=float, default=10)
     parser.add_argument("p_max", help="Maximum density of items", type=float, default=1000)
@@ -49,7 +51,7 @@ def main():
         print(f'{{Offline_Obj: {offline_sum_values}, Offline_Weight: {offline_sum_weights}, '
                 + f'Online_Obj: {online_sum_values}, Online_Weights: {online_sum_weights}}}')
     
-    print(f'Setup: {args.n} items, p_min={args.p_min}, p_max={args.p_max}, w_max={args.w_max}')
+    print(f'Setup: {args.n} items, weight_dimension={args.d}, p_min={args.p_min}, p_max={args.p_max}, w_max={args.w_max}')
     print('Competitive ratio:', 1+np.log(args.p_max/args.p_min))
     print(f'Results after {args.experiments} experiments:')
     print('Average of Empirical Ratio:', np.mean(empirical_ratios))

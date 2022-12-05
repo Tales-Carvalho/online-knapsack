@@ -6,12 +6,15 @@ from data import Item
 def offline_knapsack(items: list[Item]):
     problem = LpProblem('Offline_Knapsack', LpMaximize)
     values = []
-    weights = []
+    # Assuming all items have same dimension
+    weights_dimensions = [[] for _ in range(len(items[0].weights))]
     for i, item in enumerate(items):
         x = LpVariable(f'x_{i:09d}', cat=LpBinary)
         values.append(x * item.value)
-        weights.append(x * item.weight)
-    problem += (lpSum(weights) <= 1)
+        for j, w in enumerate(item.weights):
+            weights_dimensions[j].append(x * w)
+    for weights in weights_dimensions:
+        problem += (lpSum(weights) <= 1)
     problem += lpSum(values)
     problem.solve(solver=PULP_CBC_CMD(msg=False))
     objective_value = problem.objective.value()
