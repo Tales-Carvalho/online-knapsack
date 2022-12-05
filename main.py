@@ -15,14 +15,9 @@ class Experiment:
         self.w_max = args.w_max
         self.p_min = args.p_min
         self.p_max = args.p_max
-
-    def init_inputs(self):
-        sets_items = []
-        for e in range(self.experiments):
-            sets_items.append(generate_data(self.n, self.w_max, self.p_min, self.p_max, seed=e))
-        return sets_items
     
-    def run_one(self, items: list[Item]):
+    def run_one(self, seed: int):
+        items = generate_data(self.n, self.w_max, self.p_min, self.p_max, seed)
         offline_obj, offline_vars = offline_knapsack(items)
         offline_sum_values, offline_sum_weights = get_values(items, offline_vars)
         verify_result(offline_sum_values, offline_sum_weights, offline_obj)
@@ -32,9 +27,8 @@ class Experiment:
         return offline_sum_values, offline_sum_weights, online_sum_values, online_sum_weights
     
     def run_experiment(self):
-        sets_items = self.init_inputs()
-        with Pool() as pool:
-            results = pool.map(self.run_one, sets_items)
+        with Pool(processes=4) as pool:
+            results = pool.map(self.run_one, range(self.experiments))
         return results
 
 def main():
