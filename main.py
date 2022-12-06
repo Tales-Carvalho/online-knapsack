@@ -1,5 +1,6 @@
 from __future__ import annotations
 from argparse import ArgumentParser
+import os
 import numpy as np
 from multiprocessing import Pool
 
@@ -34,12 +35,13 @@ class Experiment:
 
 def main():
     parser = ArgumentParser()
+    parser.add_argument("experiment_name", help="Name of experiment", type=str)
     parser.add_argument("experiments", help="Number of experiments", type=int, default=1000)
     parser.add_argument("n", help="Number of items", type=int, default=10000)
     parser.add_argument("d", help="Weights dimension of each item", type=int, default=1)
-    parser.add_argument("w_max", help="Maximum weight of items", type=float, default=0.01)
-    parser.add_argument("p_min", help="Minimum density of items", type=float, default=10)
-    parser.add_argument("p_max", help="Maximum density of items", type=float, default=1000)
+    parser.add_argument("w_max", help="Maximum weight of each item", type=float, default=0.01)
+    parser.add_argument("p_min", help="Minimum density of each item", type=float, default=10)
+    parser.add_argument("p_max", help="Maximum density of each item", type=float, default=1000)
     args = parser.parse_args()
     
     results = Experiment(args).run_experiment()
@@ -56,6 +58,13 @@ def main():
     print(f'Results after {args.experiments} experiments:')
     print('Average of Empirical Ratio:', np.mean(empirical_ratios))
     print('Std error of Empirical Ratio:', np.std(empirical_ratios) / np.sqrt(args.experiments))
+    
+    os.makedirs('results', exist_ok=True)
+    with open(f'results/{args.experiment_name}.csv', 'w') as f:
+        f.write('offline_result,online_result,empirical_ratio\n')
+        for result, empirical_ratio in zip(results, empirical_ratios):
+            offline_result, _, online_result, _ = result
+            f.write(f'{offline_result},{online_result},{empirical_ratio}\n')
 
 if __name__ == '__main__':
     main()
