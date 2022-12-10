@@ -1,0 +1,37 @@
+{Offline_Obj: 987.0520502151561, Offline_Weight: [0.99999999], Online_Obj: 727.4582031472587, Online_Weights: [0.99989197]}
+{Offline_Obj: 986.0997266557738, Offline_Weight: [0.99999983], Online_Obj: 711.7105081658481, Online_Weights: [0.9997754]}
+{Offline_Obj: 986.429342460442, Offline_Weight: [1.00000007], Online_Obj: 709.9878087698863, Online_Weights: [0.99986513]}
+{Offline_Obj: 986.4920959720178, Offline_Weight: [0.99999998], Online_Obj: 730.3857758289068, Online_Weights: [0.99960939]}
+{Offline_Obj: 986.9480431383474, Offline_Weight: [0.99999999], Online_Obj: 727.4966578847626, Online_Weights: [0.99992128]}
+{Offline_Obj: 986.5533586865781, Offline_Weight: [0.99999999], Online_Obj: 713.5091817184979, Online_Weights: [0.99953426]}
+{Offline_Obj: 985.6722216578885, Offline_Weight: [1.00000009], Online_Obj: 725.5466418840167, Online_Weights: [0.9997237]}
+{Offline_Obj: 986.0819974995452, Offline_Weight: [1.00000006], Online_Obj: 715.71205108652, Online_Weights: [0.99968219]}
+{Offline_Obj: 986.2498319032775, Offline_Weight: [0.99999999], Online_Obj: 724.6057505550732, Online_Weights: [0.99990286]}
+{Offline_Obj: 986.1538307335431, Offline_Weight: [0.99999989], Online_Obj: 724.9723798261733, Online_Weights: [0.99972462]}
+{Offline_Obj: 986.5545405032747, Offline_Weight: [0.99999998], Online_Obj: 720.117475473323, Online_Weights: [0.99982036]}
+{Offline_Obj: 985.1612962529962, Offline_Weight: [0.99999988], Online_Obj: 720.1809005738874, Online_Weights: [0.99988764]}
+{Offline_Obj: 985.6724396463203, Offline_Weight: [1.00000002], Online_Obj: 714.8195604363724, Online_Weights: [0.99989365]}
+{Offline_Obj: 986.3052162807267, Offline_Weight: [0.9999999], Online_Obj: 724.9779003578283, Online_Weights: [0.99943199]}
+{Offline_Obj: 985.7825782257196, Offline_Weight: [1.00000004], Online_Obj: 727.8675501357611, Online_Weights: [0.99988185]}
+{Offline_Obj: 986.1352065289907, Offline_Weight: [0.99999984], Online_Obj: 727.1839515841914, Online_Weights: [0.99976015]}
+{Offline_Obj: 986.2780666196229, Offline_Weight: [1.00000009], Online_Obj: 721.8591598748307, Online_Weights: [0.99955537]}
+{Offline_Obj: 985.3876138560928, Offline_Weight: [1.00000004], Online_Obj: 725.10089817123, Online_Weights: [0.99987462]}
+{Offline_Obj: 985.6643013560699, Offline_Weight: [1.00000006], Online_Obj: 714.4009456579366, Online_Weights: [0.99963837]}
+{Offline_Obj: 985.4757957098826, Offline_Weight: [1.], Online_Obj: 716.9088080159322, Online_Weights: [0.99978258]}
+{Offline_Obj: 986.0288418904734, Offline_Weight: [1.00000006], Online_Obj: 716.8956648881432, Online_Weights: [0.99969432]}
+{Offline_Obj: 986.5011381942053, Offline_Weight: [1.00000001], Online_Obj: 724.9615402336083, Online_Weights: [0.9997025]}
+{Offline_Obj: 986.8063431474707, Offline_Weight: [0.99999984], Online_Obj: 721.8790759217125, Online_Weights: [0.99956022]}
+{Offline_Obj: 987.0512788134856, Offline_Weight: [1.00000006], Online_Obj: 728.2845073906528, Online_Weights: [0.99971441]}
+{Offline_Obj: 987.120059184269, Offline_Weight: [1.00000007], Online_Obj: 740.4061107708606, Online_Weights: [0.99992626]}
+{Offline_Obj: 986.3004073095005, Offline_Weight: [0.99999999], Online_Obj: 700.9013234203951, Online_Weights: [0.99975217]}
+{Offline_Obj: 986.7969089060128, Offline_Weight: [0.99999982], Online_Obj: 717.5073748484181, Online_Weights: [0.99936428]}
+{Offline_Obj: 986.1169585916548, Offline_Weight: [0.99999997], Online_Obj: 720.8658945997232, Online_Weights: [0.99977697]}
+{Offline_Obj: 986.9296014050246, Offline_Weight: [1.], Online_Obj: 715.3720701124495, Online_Weights: [0.99980405]}
+{Offline_Obj: 986.7840781570457, Offline_Weight: [0.99999989], Online_Obj: 710.440149628406, Online_Weights: [0.99964645]}
+{Offline_Obj: 987.1959845609108, Offline_Weight: [1.00000007], Online_Obj: 728.8389342754363, Online_Weights: [0.99984393]}
+{Offline_Obj: 985.9746023543352, Offline_Weight: [0.99999999], Online_Obj: 730.532387774575, Online_Weights: [0.99961419]}
+Setup: 10000 items, weight_dimension=1, p_min=10.0, p_max=1000.0, w_max=0.001
+Competitive ratio: 5.605170185988092
+Results after 32 experiments:
+Average of Empirical Ratio: 1.3675489108066778
+Std error of Empirical Ratio: 0.0025685255143636553
