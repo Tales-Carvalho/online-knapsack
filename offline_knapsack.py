@@ -16,7 +16,7 @@ def offline_knapsack(items: list[Item]):
     for weights in weights_dimensions:
         problem += (lpSum(weights) <= 1)
     problem += lpSum(values)
-    problem.solve(solver=PULP_CBC_CMD(msg=False))
+    problem.solve(solver=PULP_CBC_CMD(msg=False, threads=8))
     objective_value = problem.objective.value()
     decision_variables = []
     for variable in problem.variables():
